@@ -4,40 +4,26 @@ class Auto:
         self.max_h = max_h
         self.nomer = nomer
 
-
-a = Auto(4, 305, "BC777BK")
-
-print(
-    "Інформація про автомобіль",
-    "Кількість сидінь:",
-    a.ks_s,
-    "Максимальна швидкість:",
-    a.max_h,
-    "Номера авто:",
-    a.nomer,
-    sep="\n",
-)
+    def print_info(self):
+        return (
+            f" Кількість сидінь: {self.ks_s}"
+            f" Макс. Швидкість: {self.max_h}"
+            f" Номер: {self.nomer}"
+        )
 
 
-class Bus:
-    def __init__(self, ks_s1, max_h1, nomer1, marsh):
-        self.ks_s1 = ks_s1
-        self.max_h1 = max_h1
-        self.nomer1 = nomer1
+class Bus(Auto):
+    def __init__(self, ks_s, mah_h, nomer, marsh):
+        super().__init__(ks_s, mah_h, nomer)
         self.marsh = marsh
 
+    def print_info(self):
 
-b = Bus(28, 160, "ABOBUS", "29 Винники-Залізничий Вокзал")
+        auto_print_info = super(Bus, self).print_info()
+        return f"{auto_print_info}" f" Маршрут: {self.marsh}"
 
-print(
-    "Інформація про автобус",
-    "Кількість сидінь:",
-    b.ks_s1,
-    "Максимальна швидкість:",
-    b.max_h1,
-    "Номера автобуса:",
-    b.nomer1,
-    "Маршрут автобуса №",
-    b.marsh,
-    sep="\n",
-)
+
+auto = Auto(4, 320, "BC777BK")
+print(auto.print_info())
+bus = Bus(28, 160, "ШКОЛЯРИК", "№29 Винники-Залізничний завод")
+print(bus.print_info())
